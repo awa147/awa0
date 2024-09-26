@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>浏览器信息</h1>
+    <p id="info"></p>
+    <script>
+        let userAgent = navigator.userAgent;
+        document.getElementById('info').innerText = 
+            '您的浏览器用户代理是：' + userAgent;
+    </script>
+</body>
+</html>

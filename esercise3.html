@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Random Integer Generator</title>
+</head>
+<body>
+    <h1>Random Integer Generator</h1>
+    <button id="generateButton">Generate Random Integer</button>
+    <p id="result"></p>
+    <script>
+        function randomInt() {
+             return Math.floor(Math.random() * 100) + 1;
+        }
+        document.getElementById('generateButton').addEventListener('click', function() {
+            const randomNumber = randomInt();
+            document.getElementById('result').textContent = `Random Integer: ${randomNumber}`;
+        });
+    </script>
+</body>
+</html>
