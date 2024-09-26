@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <script src="randominteger.js" defer></script>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p >
+    <input type="text" id="guessInput">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="message"></p >
+
+    <script>
+          function randomInt() {
+                   return Math.floor(Math.random() * 100) + 1;
+         }
+        var targetNumber = randomInt();
+        var turns = 10;
+        var guesses = [];
+
+        function checkGuess() {
+          
+            var guess = parseInt(document.getElementById("guessInput").value);
+
+            if (guesses.includes(guess)) {
+                document.getElementById("message").innerText = "You already guessed " + guess + ". Try a different number.";
+            } else {
+                guesses.push(guess);
+                turns--;
+
+                if (guess === targetNumber) {
+                    document.getElementById("message").innerText = "Congratulations! You guessed the number!";
+                } else if (guess < targetNumber) {
+                    document.getElementById("message").innerText = "Try a higher number. Turns left: " + turns;
+                } else {
+                    document.getElementById("message").innerText = "Try a lower number. Turns left: " + turns;
+                }
+
+                if (turns === 0) {
+                    document.getElementById("message").innerText = "Out of turns! The number was " + targetNumber + ". Game over.";
+                    var playAgain = confirm("Do you want to play again?");
+                    if (playAgain) {
+                        targetNumber = randomInt();
+                        turns = 10;
+                        guesses = [];
+                        document.getElementById("message").innerText = "";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+   
